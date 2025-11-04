@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Tipos de Videojuegos</h1>
+        <p>Una guía sobre los distintos tipos de juegos y los más populares</p>
+    </header>
+
+     <main>
+        <button class="boton-genero" onclick="abrirModal('Accion')">Acción</button>
+        <button class="boton-genero" onclick="abrirModal('Aventura')">Aventura</button>
+        <button class="boton-genero" onclick="abrirModal('Estrategia')">Estrategia</button>
+        <button class="boton-genero" onclick="abrirModal('RPG')">RPG</button>
+    </main>
+
+    <!-- Modal flotante -->
+    <div id="modal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal()">×</span>
+            <h2 id="tituloModal"></h2>
+            <p>Muy pronto agregaremos la información aquí 👀🔥</p>
+        </div>
+    </div>
+
+    <script src="Script-videojuegos.js"></script>
+</body>
+</body>
+</html>
