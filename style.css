@@ -1,88 +1,113 @@
+/* ---------- Reset / Base ---------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: #1f9c30;
-}
-header {
-   background: linear-gradient(90deg, red, rgb(5, 5, 5), green, blue, purple);
-    background-size: 400% 400%;
-    animation: cambioColores 5s infinite alternate;
-    color: rgb(0, 196, 16);
-    padding: 20px;
-    text-align: center;
+    position: relative; /* para posicionar flotantes con respecto al body */
 }
 
-/* Animación del degradado */
-@keyframes cambioColores {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-}
-section {
-    max-width: 900px;
-    margin: auto;
-    background: rgb(177, 39, 147);
+/* ---------- Header animado ---------- */
+header {
+    background: linear-gradient(90deg, #ff4d4d, #050505, #00b050, #0066ff, #6a00ff);
+    background-size: 400% 400%;
+    animation: cambioColores 6s infinite linear;
+    color: #00c410;
     padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-}
-h2 {
-    color: #444;
-}
-.genero {
-    margin-bottom: 20px;
-}
-footer {
     text-align: center;
-    padding: 15px;
-    margin-top: 30px;
-    background: #222;
-    color: white;
 }
+@keyframes cambioColores {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---------- Layout principal ---------- */
+.main-contenido {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Cada fila: botón a la izquierda, caja a la derecha ocupando todo el espacio disponible */
+.fila {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Botón (lado izquierdo) */
 .boton-genero {
-    display: block;
-    width: 60%;
-    margin: 15px auto;
-    padding: 12px;
-    font-size: 20px;
-    background: #222;
+    flex: 0 0 200px; /* ancho fijo */
+    padding: 12px 16px;
+    font-size: 18px;
+    background: #4e73df;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s;
+}
+.boton-genero:hover { transform: translateX(4px); background: #2e59d9; }
+
+/* Caja de color (lado derecho) */
+.caja {
+    flex: 1;               /* ocupa todo el espacio restante */
+    min-height: 100px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.boton-genero:hover {
-    background: #444;
+/* Colores por clase */
+.rojo     { background-color: #ff4d4d; }
+.verde    { background-color: #4dff4d; color: #0b0b0b; }
+.azul     { background-color: #4d4dff; }
+.amarillo { background-color: #ffcc00; color: #0b0b0b; }
+
+/* ---------- Caja flotante (emerge al hacer click) ---------- */
+.flotante {
+    display: none;            /* ocultas por defecto */
+    position: absolute;
+    top: 130px;               /* aparece debajo del header */
+    right: 24px;
+    width: 55%;
+    max-width: 900px;
+    min-width: 320px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    z-index: 1200;
+    border: 2px solid rgba(0,0,0,0.08);
 }
 
-/* Modal */
-.modal {
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-}
-
-.modal-contenido {
-    background: white;
-    width: 50%;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.cerrar {
-    float: right;
-    font-size: 28px;
+/* Botón cerrar dentro de flotante */
+.cerrar-flotante {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    background: transparent;
+    border: none;
+    font-size: 26px;
     cursor: pointer;
+    line-height: 1;
+}
+
+/* Contenido interno de la flotante */
+.contenido-flotante { margin-top: 8px; font-size: 15px; color: #222; }
+
+/* Responsive - en pantallas pequeñas apilamos verticalmente */
+@media (max-width: 760px) {
+    .fila { flex-direction: column; align-items: stretch; }
+    .boton-genero { width: 100%; flex: 0 0 auto; }
+    .flotante { width: calc(100% - 40px); right: 20px; top: 160px; }
 }

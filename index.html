@@ -12,23 +12,57 @@
         <p>Una guía sobre los distintos tipos de juegos y los más populares</p>
     </header>
 
-     <main>
-        <button class="boton-genero" onclick="abrirModal('Accion')">Acción</button>
-        <button class="boton-genero" onclick="abrirModal('Aventura')">Aventura</button>
-        <button class="boton-genero" onclick="abrirModal('Estrategia')">Estrategia</button>
-        <button class="boton-genero" onclick="abrirModal('RPG')">RPG</button>
+    <main class="main-contenido">
+        <!-- FILA 1 -->
+        <div class="fila">
+            <button class="boton-genero" onclick="mostrarFlotante('f-accion')">Acción</button>
+            <div class="caja rojo">Juegos de acción</div>
+        </div>
+
+        <!-- FILA 2 -->
+        <div class="fila">
+            <button class="boton-genero" onclick="mostrarFlotante('f-aventura')">Aventura</button>
+            <div class="caja verde">Juegos de aventura</div>
+        </div>
+
+        <!-- FILA 3 -->
+        <div class="fila">
+            <button class="boton-genero" onclick="mostrarFlotante('f-estrategia')">Estrategia</button>
+            <div class="caja azul">Juegos de estrategia</div>
+        </div>
+
+        <!-- FILA 4 -->
+        <div class="fila">
+            <button class="boton-genero" onclick="mostrarFlotante('f-rpg')">RPG</button>
+            <div class="caja amarillo">Juegos RPG</div>
+        </div>
     </main>
 
-    <!-- Modal flotante -->
-    <div id="modal" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar" onclick="cerrarModal()">×</span>
-            <h2 id="tituloModal"></h2>
-            <p>Muy pronto agregaremos la información aquí 👀🔥</p>
-        </div>
+    <!-- CAJAS FLOTANTES (UNA POR BOTÓN) -->
+    <div id="f-accion" class="flotante" aria-hidden="true">
+        <button class="cerrar-flotante" onclick="cerrarFlotante('f-accion')">×</button>
+        <h2>Juegos de Acción</h2>
+        <div class="contenido-flotante">Aquí agregaremos la información de Acción.</div>
+    </div>
+
+    <div id="f-aventura" class="flotante" aria-hidden="true">
+        <button class="cerrar-flotante" onclick="cerrarFlotante('f-aventura')">×</button>
+        <h2>Juegos de Aventura</h2>
+        <div class="contenido-flotante">Aquí agregaremos la información de Aventura.</div>
+    </div>
+
+    <div id="f-estrategia" class="flotante" aria-hidden="true">
+        <button class="cerrar-flotante" onclick="cerrarFlotante('f-estrategia')">×</button>
+        <h2>Juegos de Estrategia</h2>
+        <div class="contenido-flotante">Aquí agregaremos la información de Estrategia.</div>
+    </div>
+
+    <div id="f-rpg" class="flotante" aria-hidden="true">
+        <button class="cerrar-flotante" onclick="cerrarFlotante('f-rpg')">×</button>
+        <h2>Juegos RPG</h2>
+        <div class="contenido-flotante">Aquí agregaremos la información de RPG.</div>
     </div>
 
     <script src="Script-videojuegos.js"></script>
-</body>
 </body>
 </html>
